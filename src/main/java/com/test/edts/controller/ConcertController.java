@@ -24,4 +24,10 @@ public class ConcertController {
 
 		return responseDTO.successResponse(concertService.getAll(param));
 	}
+
+	@PostMapping("/save")
+	private GenericResponseDTO getAllReadyConcert(@RequestBody ConcertDTO param) throws ParseException {
+		GenericResponseDTO responseDTO = new GenericResponseDTO();
+		return responseDTO.successResponse(concertService.save(param));
+	}
 }

@@ -1,9 +1,6 @@
 package com.test.edts.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +13,8 @@ import lombok.Setter;
 @Table(name = "concert")
 public class Concert {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID")
+    @SequenceGenerator(name = "ID", sequenceName = "concert_seq", allocationSize=1)
     @Column(name = "concert_id")
     private Long concertId;
 

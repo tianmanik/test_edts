@@ -28,5 +28,10 @@ public class ConcertService {
 		}
 	}
 
+	public Concert save (ConcertDTO param ) throws ParseException {
+
+		return concertRepository.save(param.toBean());
+	}
+
 
 }

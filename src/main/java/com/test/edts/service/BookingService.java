@@ -52,10 +52,17 @@ public class BookingService {
 		}
 
 
+		long concertDateValidation = concert.get().getConcertDate().compareTo(GeneralUtil.now());
+		if(concertDateValidation<0){
+			return responseDTO.errorResponse(400,"concert date has expired");
+		}
+
 
 		if(concert.get().getAvailableTickets()<=0){
 			return responseDTO.errorResponse(400,"limit has expired");
 		}
+
+
 
 		// Perform booking
 		concert.get().setAvailableTickets(concert.get().getAvailableTickets() - 1);
