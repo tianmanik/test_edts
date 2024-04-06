@@ -20,7 +20,12 @@ public class ConcertService {
 	ConcertRepository concertRepository;
 
 	public List<Concert> getAll (RequestDTO param) throws ParseException {
-		return concertRepository.findByConcertDateAfterAndAvailableTicketsGreaterThanEqual(GeneralUtil.stringToTimestamp( param.getConcertDate()),1L);
+		if(param.getConcertDate()!=null && !param.getConcertDate().isEmpty()){
+			return concertRepository.findByConcertDateAfterAndAvailableTicketsGreaterThanEqual(GeneralUtil.stringToTimestamp( param.getConcertDate()),1L);
+		}else {
+			return concertRepository.findByConcertDateAfterAndAvailableTicketsGreaterThanEqual(GeneralUtil.now(),1L);
+
+		}
 	}
 
 
